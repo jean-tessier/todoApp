@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="todo">>
+    <head>
+        <title>Jean Tessier's TODO App</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+    
+    <body ng-controller="TodoController as todoCtrl">
+        <h1 class="text-center">Jean Tessier's ToDo App</h1>
+        <h2 class="text-center">It's better than other todo apps!</h2>
+        
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="todoItem in todoCtrl.todoList">
+                <button ng-click="todoCtrl.remove(todoItem)">{{todoItem}}</button>
+            </li>
+        </ul>
+        
+        <form name="todoForm" ng-controller="TodoFormController as todoFormCtrl"
+                              ng-submit="todoFormCtrl.addTodo(todoCtrl)">
+            <h3>Add a todo:</h3>
+            <fieldset class="form-group">
+                <textarea class="form-control" ng-model="todoFormCtrl.newTodo" placeholder="Write your task here!"></textarea>
+                <input type="submit" class="form-control" value="Submit"/>
+            </fieldset>
+        </form>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+        <script src="resources/javascript/app.js"></script>
+    </body>
+</html>
